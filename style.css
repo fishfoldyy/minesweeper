@@ -12,6 +12,10 @@
   background-color: #ccc;
   border: 1px solid #fff;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
 .cell.clicked {
@@ -20,4 +24,5 @@
 
 .mine {
   background-color: #000;
+  color: #fff;
 }
