@@ -27,9 +27,9 @@ function placeMines(cellsArray, numMines) {
     const index = getRandomInt(cellsArray.length);
     if (!mines.includes(index)) {
       mines.push(index);
+      cellsArray[index].classList.add('mine'); // Mark the cell as a mine
     }
   }
-  return mines;
 }
 function countAdjacentMines(cellsArray, row, col) {
   let count = 0;
