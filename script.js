@@ -29,13 +29,8 @@ function placeMines(cellsArray, numMines) {
       mines.push(index);
     }
   }
-  mines.forEach(index => {
-    const mineIcon = document.createElement('i');
-    mineIcon.classList.add('fas', 'fa-bomb');
-    cellsArray[index].appendChild(mineIcon);
-  });
+  return mines;
 }
-
 function countAdjacentMines(cellsArray, row, col) {
   let count = 0;
   for (let i = row - 1; i <= row + 1; i++) {
@@ -74,7 +69,14 @@ function revealCell(cellsArray, row, col) {
 function handleClick(event) {
   const row = parseInt(event.target.dataset.row);
   const col = parseInt(event.target.dataset.col);
-  revealCell(cells, row, col);
+  const index = row * 10 + col;
+  if (!cells[index].classList.contains('mine')) {
+    revealCell(cells, row, col);
+  } else {
+    const mineIcon = document.createElement('i');
+    mineIcon.classList.add('fas', 'fa-bomb');
+    event.target.appendChild(mineIcon);
+  }
 }
 
 cells = createBoard(10, 10);
