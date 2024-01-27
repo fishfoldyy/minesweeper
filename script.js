@@ -30,7 +30,6 @@ function placeMines(cellsArray, numMines) {
       const mineIcon = document.createElement('i');
       mineIcon.classList.add('fas', 'fa-bomb');
       cellsArray[index].appendChild(mineIcon);
-      cellsArray[index].classList.add('mine');
     }
   }
 }
