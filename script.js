@@ -27,11 +27,13 @@ function placeMines(cellsArray, numMines) {
     const index = getRandomInt(cellsArray.length);
     if (!mines.includes(index)) {
       mines.push(index);
-      const mineIcon = document.createElement('i');
-      mineIcon.classList.add('fas', 'fa-bomb');
-      cellsArray[index].appendChild(mineIcon);
     }
   }
+  mines.forEach(index => {
+    const mineIcon = document.createElement('i');
+    mineIcon.classList.add('fas', 'fa-bomb');
+    cellsArray[index].appendChild(mineIcon);
+  });
 }
 
 function countAdjacentMines(cellsArray, row, col) {
@@ -40,7 +42,7 @@ function countAdjacentMines(cellsArray, row, col) {
     for (let j = col - 1; j <= col + 1; j++) {
       if (i >= 0 && i < 10 && j >= 0 && j < 10 && !(i === row && j === col)) {
         const index = i * 10 + j;
-        if (cellsArray[index].classList.contains('mine')) {
+        if (cellsArray[index].querySelector('i')) {
           count++;
         }
       }
