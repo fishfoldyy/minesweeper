@@ -70,12 +70,14 @@ function handleClick(event) {
   const row = parseInt(event.target.dataset.row);
   const col = parseInt(event.target.dataset.col);
   const index = row * 10 + col;
-  if (!cells[index].classList.contains('mine')) {
-    revealCell(cells, row, col);
-  } else {
-    const mineIcon = document.createElement('i');
-    mineIcon.classList.add('fas', 'fa-bomb');
-    event.target.appendChild(mineIcon);
+  if (!cells[index].classList.contains('clicked')) {
+    if (cells[index].classList.contains('mine')) {
+      const mineIcon = document.createElement('i');
+      mineIcon.classList.add('fas', 'fa-bomb');
+      event.target.appendChild(mineIcon);
+    } else {
+      revealCell(cells, row, col);
+    }
   }
 }
 
