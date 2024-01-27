@@ -42,7 +42,8 @@ header {
 }
 
 .mine {
-  color: white; 
+  background-color: #ccc; /* Set initial background color */
+  color: #000; /* Set initial text color */
 }
 
   margin: 0;
