@@ -53,10 +53,7 @@ function revealCell(cellsArray, row, col) {
   if (!cell.classList.contains('clicked')) {
     cell.classList.add('clicked');
     const count = countAdjacentMines(cellsArray, row, col);
-    if (cell.classList.contains('mine')) {
-      cell.textContent = ''; // Clear any content
-      cell.style.backgroundColor = 'black'; // Make mine cell black
-    } else {
+    if (!cell.classList.contains('mine')) {
       if (count > 0) {
         cell.textContent = count;
       } else {
@@ -66,7 +63,7 @@ function revealCell(cellsArray, row, col) {
             if (i >= 0 && i < 10 && j >= 0 && j < 10 && !(i === row && j === col)) {
               const adjacentIndex = i * 10 + j;
               const adjacentCell = cellsArray[adjacentIndex];
-              if (!adjacentCell.classList.contains('mine')) {
+              if (!adjacentCell.classList.contains('clicked')) {
                 revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
               }
             }
