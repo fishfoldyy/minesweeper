@@ -54,6 +54,7 @@ function revealCell(cellsArray, row, col) {
     cell.classList.add('clicked');
     const count = countAdjacentMines(cellsArray, row, col);
     if (cell.classList.contains('mine')) {
+      cell.textContent = ''; // Clear any content
       cell.style.backgroundColor = 'black'; // Make mine cell black
     } else {
       if (count > 0) {
