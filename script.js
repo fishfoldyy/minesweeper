@@ -70,8 +70,17 @@ function handleClick(event) {
   const row = parseInt(event.target.dataset.row);
   const col = parseInt(event.target.dataset.col);
   const index = row * 10 + col;
-  if (!cells[index].classList.contains('clicked')) {
-    revealCell(cells, row, col);
+  const cell = cells[index];
+  
+  if (!cell.classList.contains('clicked')) {
+    if (cell.classList.contains('mine')) {
+      const mineIcon = document.createElement('i');
+      mineIcon.classList.add('fas', 'fa-bomb');
+      cell.appendChild(mineIcon);
+    } else {
+      revealCell(cells, row, col);
+    }
+    cell.classList.add('clicked');
   }
 }
 
