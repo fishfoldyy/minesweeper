@@ -49,19 +49,14 @@ function countAdjacentMines(cellsArray, row, col) {
 function revealCell(cellsArray, row, col) {
   const index = row * 10 + col;
   const cell = cellsArray[index];
+
   if (!cell.classList.contains('clicked')) {
     cell.classList.add('clicked');
     const count = countAdjacentMines(cellsArray, row, col);
     if (count > 0) {
       cell.textContent = count;
     } else {
-      for (let i = row - 1; i <= row + 1; i++) {
-        for (let j = col - 1; j <= col + 1; j++) {
-          if (i >= 0 && i < 10 && j >= 0 && j < 10 && !(i === row && j === col)) {
-            revealCell(cellsArray, i, j);
-          }
-        }
-      }
+      cell.style.backgroundColor = '#000';
     }
   }
 }
