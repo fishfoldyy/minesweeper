@@ -27,6 +27,9 @@ function placeMines(cellsArray, numMines) {
     const index = getRandomInt(cellsArray.length);
     if (!mines.includes(index)) {
       mines.push(index);
+      const mineIcon = document.createElement('i');
+      mineIcon.classList.add('fas', 'fa-bomb');
+      cellsArray[index].appendChild(mineIcon);
       cellsArray[index].classList.add('mine');
     }
   }
