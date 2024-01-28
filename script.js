@@ -62,7 +62,7 @@ function revealCell(cellsArray, row, col) {
             const adjacentCell = cellsArray[adjacentIndex];
             if (!adjacentCell.classList.contains('mine')) {
               if (!adjacentCell.classlist.contains('clicked')) {
-              revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
+                revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
               }
             }
           }
