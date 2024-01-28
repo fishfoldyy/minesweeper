@@ -60,7 +60,9 @@ function revealCell(cellsArray, row, col) {
           if (i >= 0 && i < 10 && j >= 0 && j < 10 && !(i === row && j === col)) {
             const adjacentIndex = i * 10 + j;
             const adjacentCell = cellsArray[adjacentIndex];
-            revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
+            if (!adjacentCell.classList.contains('mine')) {
+              revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
+            }
           }
         }
       }
@@ -69,7 +71,7 @@ function revealCell(cellsArray, row, col) {
       cell.textContent = count;
     } else if (cell.classList.contains('mine')) {
       // show mine
-      cell.color = 'red';
+      cell.color = 'white';
       cell.textContent = 'X';
       cell.classList.add('clicked');
       // Game over
@@ -77,6 +79,7 @@ function revealCell(cellsArray, row, col) {
     }
   }
 }
+
 
 function handleClick(event) {
   const row = parseInt(event.target.dataset.row);
