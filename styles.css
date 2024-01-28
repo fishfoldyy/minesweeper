@@ -41,9 +41,13 @@ header {
   background-color: #fff;
 }
 
-.mine {
+.cell.mine {
   background-color: #ccc; /* Set initial background color */
   color: #000; /* Set initial text color */
+}
+
+.mine.clicked {
+  background-color: #000;
 }
 
   margin: 0;
