@@ -56,14 +56,19 @@ function revealCell(cellsArray, row, col) {
     if (count > 0) {
       cell.textContent = count; // Set number if cell has adjacent mines
     } else {
-      // Loop through adjacent cells and reveal each if not already clicked
+      // Loop through adjacent cells and assign numbers before revealing
       for (let i = row - 1; i <= row + 1; i++) {
         for (let j = col - 1; j <= col + 1; j++) {
           if (i >= 0 && i < 10 && j >= 0 && j < 10 && !(i === row && j === col)) {
             const adjacentIndex = i * 10 + j;
             const adjacentCell = cellsArray[adjacentIndex];
+            const adjacentCount = countAdjacentMines(cellsArray, i, j);
             if (!adjacentCell.classList.contains('clicked')) {
-              revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
+              if (adjacentCount > 0) {
+                adjacentCell.textContent = adjacentCount; // Set number if cell has adjacent mines
+              } else {
+                revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
+              }
             }
           }
         }
