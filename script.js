@@ -79,7 +79,7 @@ function handleClick(event) {
   const cell = cells[index];
 
   if (!cell.classList.contains('clicked')) {
-    revealCell(cell, row, col);
+    revealCell(cells, row, col);
     cell.classList.add('clicked');
   }
 }
