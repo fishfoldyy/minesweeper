@@ -60,10 +60,13 @@ function revealCell(cellsArray, row, col) {
           if (i >= 0 && i < 10 && j >= 0 && j < 10 && !(i === row && j === col)) {
             const adjacentIndex = i * 10 + j;
             const adjacentCell = cellsArray[adjacentIndex];
-            if (adjacentCell.classList.contains('mine')) {
-              cell.textContent = countAdjacentMines(cellsArray, row, col);
-            } else {
-              revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
+            if (!adjacentCell.classList.contains('mine')) {
+              if (countAdjacentMines(cellsArray, i, j) === 0) {
+                revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
+              } else {
+                adjacentCell.classList.add('clicked'); // Mark adjacent cell as clicked
+                adjacentCell.textContent = countAdjacentMines(cellsArray, i, j); // Set number
+              }
             }
           }
         }
@@ -73,7 +76,6 @@ function revealCell(cellsArray, row, col) {
     }
   }
 }
-
 
 function handleClick(event) {
   const row = parseInt(event.target.dataset.row);
