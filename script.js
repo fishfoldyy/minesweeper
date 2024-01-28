@@ -56,7 +56,7 @@ function revealCell(cellsArray, row, col) {
     if (count > 0) {
       cell.textContent = count; // Set number if cell has adjacent mines
     } else {
-      // Loop through adjacent cells and reveal each if not already clicked
+      // Loop through adjacent cells and reveal and assign numbers if not already clicked
       for (let i = row - 1; i <= row + 1; i++) {
         for (let j = col - 1; j <= col + 1; j++) {
           if (i >= 0 && i < 10 && j >= 0 && j < 10 && !(i === row && j === col)) {
