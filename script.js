@@ -61,11 +61,8 @@ function revealCell(cellsArray, row, col) {
             const adjacentIndex = i * 10 + j;
             const adjacentCell = cellsArray[adjacentIndex];
             if (!adjacentCell.classList.contains('mine')) {
-              if (countAdjacentMines(cellsArray, i, j) === 0) {
-                revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
-              } else {
-                adjacentCell.classList.add('clicked'); // Mark adjacent cell as clicked
-                adjacentCell.textContent = countAdjacentMines(cellsArray, i, j); // Set number
+              if (!adjacentCell.classlist.contains('clicked')) {
+              revealCell(cellsArray, i, j); // Recursively reveal adjacent cell
               }
             }
           }
