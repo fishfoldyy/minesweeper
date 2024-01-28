@@ -53,7 +53,7 @@ function revealCell(cellsArray, row, col) {
   if (!cell.classList.contains('clicked')) {
     cell.classList.add('clicked');
     const count = countAdjacentMines(cellsArray, row, col);
-    if (count === 0) {
+    if (count == 0) {
       // Loop through adjacent cells
       for (let i = row - 1; i <= row + 1; i++) {
         for (let j = col - 1; j <= col + 1; j++) {
